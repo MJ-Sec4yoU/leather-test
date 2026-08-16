@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="connect()">Connect</button>
+<pre id="out">Waiting...</pre>
+<script>
+async function connect() {
+  try {
+    const resp = await window.LeatherProvider.request('getAddresses');
+    document.getElementById('out').textContent = JSON.stringify(resp, null, 2);
+  } catch (e) {
+    document.getElementById('out').textContent = "ERROR: " + e.message;
+  }
+}
+</script>
+</body>
+</html>
